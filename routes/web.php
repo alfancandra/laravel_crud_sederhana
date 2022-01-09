@@ -21,5 +21,6 @@ Route::get('/posts',[PostController::class,'index'])->name('posts');
 
 // Tambah data post
 Route::get('/posts/add',[PostController::class,'add'])->name('addpost');
-
 Route::post('/posts/add',[PostController::class,'store'])->name('storepost');
+// Hapus Data
+Route::get('/posts/delete/{id}',[PostController::class,'delete'])->name('deletepost');

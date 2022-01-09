@@ -12,11 +12,16 @@
 
 <body>
     <div class="container mt-4">
+        @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        @endif
+
         @if (session('error'))
-            <div class="alert alert-danger alert-block mb-3">
-                <button type="button" class="close" data-dismiss="alert">×</button>    
-                {{ session('error') }}
-            </div>
+        <div class="alert alert-error">
+            {{ session('error') }}
+        </div>
         @endif
         <form action="{{ route('storepost') }}" method="POST">
             @csrf

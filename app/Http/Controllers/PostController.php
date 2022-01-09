@@ -21,7 +21,7 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate(request(),[
+        $this->validate($request,[
             'title' => 'required',
             'content' => 'required'
         ]);
@@ -34,10 +34,24 @@ class PostController extends Controller
 
         if ($post) {
             return redirect()->route('posts')->with([
-                'success' => 'New post has been created successfully'
+                'success' => 'Berhasil Tambah Data'
             ]);
         }else{
-            return redirect()->route('addpost')->with(['error' => 'error']);
+            return redirect()->route('addpost')->with(['error' => 'Gagal']);
+        }
+    }
+
+    public function delete($id)
+    {
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+        if ($post) {
+            return redirect()->route('posts')->with([
+                'success' => 'Sukses Hapus'
+            ]);
+        }else{
+            return redirect()->route('addpost')->with(['error' => 'Gagal Hapus']);
         }
     }
 }

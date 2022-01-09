@@ -9,6 +9,17 @@
 </head>
 <body>
     <div class="container mt-4">
+        @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        @endif
+
+        @if (session('error'))
+        <div class="alert alert-error">
+            {{ session('error') }}
+        </div>
+        @endif
         <a href="{{ route('addpost') }}" class="btn btn-success">Tambah Data</a>
         <table class="table table-bordered mt-1">
             <thead>
@@ -26,7 +37,7 @@
                     <td>{{ $post->status == 0 ? 'Draft':'Publish' }}</td>
                     <td>{{ $post->created_at->format('d-m-Y') }}</td>
                     <td class="text-center">
-                         <a href="" class="btn btn-sm btn-danger">HAPUS</a>
+                         <a href="{{ route('deletepost',$post->id) }}" class="btn btn-sm btn-danger">HAPUS</a>
                     </td>
                 </tr>
                 @empty
