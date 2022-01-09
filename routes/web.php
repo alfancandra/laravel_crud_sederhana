@@ -24,3 +24,6 @@ Route::get('/posts/add',[PostController::class,'add'])->name('addpost');
 Route::post('/posts/add',[PostController::class,'store'])->name('storepost');
 // Hapus Data
 Route::get('/posts/delete/{id}',[PostController::class,'delete'])->name('deletepost');
+// Edit Data
+Route::get('/posts/edit/{id}',[PostController::class,'edit'])->name('editpost');
+Route::post('/posts/edit',[PostController::class,'update'])->name('updatepost');

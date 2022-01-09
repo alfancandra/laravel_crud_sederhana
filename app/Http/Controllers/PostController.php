@@ -57,4 +57,36 @@ class PostController extends Controller
             return redirect()->route('addpost')->with(['error' => 'Gagal Hapus']);
         }
     }
+
+    public function edit($id)
+    {
+        $post = Post::where('id',$id)->first();
+        return view('posts.edit',compact('post'));
+    }
+
+    public function update(Request $request)
+    {
+        $this->validate($request,[
+            'title' => 'required',
+            'content' => 'required'
+        ]);
+
+        $id = $request->id;
+
+        $post = Post::findOrFail($id);
+
+        $post->update([
+            'title' => $request->title,
+            'content' => $request->content,
+            'status' => 1,
+        ]);
+
+        if ($post) {
+            return redirect()->route('posts')->with([
+                'success' => 'Sukses Hapus'
+            ]);
+        }else{
+            return redirect()->route('addpost')->with(['error' => 'Gagal Hapus']);
+        }
+    }
 }

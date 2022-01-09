@@ -25,6 +25,7 @@
             <thead>
                 <tr>
                     <th scope="col">Title</th>
+                    <th scope="col">Content</th>
                     <th scope="col">Status</th>
                     <th scope="col">Create At</th>
                     <th scope="col">Action</th>
@@ -34,10 +35,12 @@
                 @forelse ($posts as $post)
                 <tr>
                     <td>{{ $post->title }}</td>
+                    <td>{{ $post->content }}</td>
                     <td>{{ $post->status == 0 ? 'Draft':'Publish' }}</td>
                     <td>{{ $post->created_at->format('d-m-Y') }}</td>
                     <td class="text-center">
                          <a href="{{ route('deletepost',$post->id) }}" class="btn btn-sm btn-danger">HAPUS</a>
+                         <a href="{{ route('editpost',$post->id) }}" class="btn btn-sm btn-warning">EDIT</a>
                     </td>
                 </tr>
                 @empty
