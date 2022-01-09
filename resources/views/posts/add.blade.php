@@ -12,6 +12,7 @@
 
 <body>
     <div class="container mt-4">
+        <a href="{{ route('posts') }}" class="btn btn-info">Data Post</a>
         @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}

@@ -37,8 +37,11 @@ class PostController extends Controller
                 'success' => 'Berhasil Tambah Data'
             ]);
         }else{
-            return redirect()->route('addpost')->with(['error' => 'Gagal']);
+            return redirect()->route('addpost')->with([
+                'error' => 'Gagal'
+            ]);
         }
+        
     }
 
     public function delete($id)
