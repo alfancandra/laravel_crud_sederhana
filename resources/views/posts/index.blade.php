@@ -26,7 +26,7 @@
                     <td>{{ $post->status == 0 ? 'Draft':'Publish' }}</td>
                     <td>{{ $post->created_at->format('d-m-Y') }}</td>
                     <td class="text-center">
-                         <a href=”” class="btn btn-sm btn-danger">HAPUS</a>
+                         <a href="" class="btn btn-sm btn-danger">HAPUS</a>
                     </td>
                 </tr>
                 @empty

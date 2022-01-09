@@ -26,18 +26,18 @@ class PostController extends Controller
             'content' => 'required'
         ]);
 
-        try{
-            $post = Post::create([
-                'title' => $request->title,
-                'content' => $request->content,
-                'status' => 1,
-            ]);
+        $post = Post::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'status' => 1,
+        ]);
 
+        if ($post) {
             return redirect()->route('posts')->with([
                 'success' => 'New post has been created successfully'
             ]);
-        } catch (QueryException $e) {
-            return redirect()->route('addpost')->with(['error' => $e->errorInfo]);
+        }else{
+            return redirect()->route('addpost')->with(['error' => 'error']);
         }
     }
 }

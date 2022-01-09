@@ -12,10 +12,10 @@
 
 <body>
     <div class="container mt-4">
-        @if ($message = Session::get('error'))
+        @if (session('error'))
             <div class="alert alert-danger alert-block mb-3">
                 <button type="button" class="close" data-dismiss="alert">×</button>    
-                {{ $message }}
+                {{ session('error') }}
             </div>
         @endif
         <form action="{{ route('storepost') }}" method="POST">
